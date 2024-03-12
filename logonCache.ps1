@@ -12,7 +12,7 @@ function Get-CachedUsers
 
 function Get-LogonCache
 {
-    # $connectedUsers = Get-ADUser -Filter * | Select-Object -ExpandProperty Name
+    $connectedUsers = Get-ADUser -Filter * | Select-Object -ExpandProperty Name
     # get cached users
     $cachedUsers = Get-ChildItem -Path "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\ProfileList" | Select-Object -ExpandProperty Name
 
