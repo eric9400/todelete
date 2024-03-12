@@ -5,9 +5,9 @@ function Get-Security
     $patch = Get-HotFix | Select-Object -ExpandProperty 'HotFixID'
     $firewall = Get-NetFirewallProfile | Select-Object Name, Enabled
     $firewallRule = Get-NetFirewallRule | Where-Object { $_.Enabled -eq "True" } | Select-Object -Unique -ExpandProperty DisplayName
-    $antivirus = Get-WmiObject -Namespace "root\SecurityCenter2" -Class "AntivirusProduct" | Select-Object -ExpandProperty displayName
+    # $antivirus = Get-WmiObject -Namespace "root\SecurityCenter2" -Class "AntivirusProduct" | Select-Object -ExpandProperty displayName
     # get antivirus version
-    $antivirusVersion = Get-WmiObject -Namespace "root\SecurityCenter2" -Class "AntivirusProduct" | Select-Object -ExpandProperty productVersion
+    # $antivirusVersion = Get-WmiObject -Namespace "root\SecurityCenter2" -Class "AntivirusProduct" | Select-Object -ExpandProperty productVersion
 
 
     $security_info = @{
