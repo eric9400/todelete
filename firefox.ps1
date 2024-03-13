@@ -5,11 +5,7 @@ function Get-FirefoxAddon {
     $profileDir = "$env:APPDATA\Mozilla\Firefox\Profiles"
 
     # Get the list of Firefox profile directories
-    try {
-        $profileDirs = Get-ChildItem -erroraction 'silentlycontinue' -Path $profileDir -Directory
-    }
-    catch {
-    }
+    $profileDirs = Get-ChildItem -erroraction 'silentlycontinue' -Path $profileDir -Directory
 
     # Iterate through each profile directory
     foreach ($dir in $profileDirs) {
