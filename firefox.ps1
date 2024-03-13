@@ -5,7 +5,11 @@ function Get-FirefoxAddon {
     $profileDir = "$env:APPDATA\Mozilla\Firefox\Profiles"
 
     # Get the list of Firefox profile directories
-    $profileDirs = Get-ChildItem -Path $profileDir -Directory
+    try {
+        $profileDirs = Get-ChildItem -Path $profileDir -Directory
+    }
+    catch {
+    }
 
     # Iterate through each profile directory
     foreach ($dir in $profileDirs) {
