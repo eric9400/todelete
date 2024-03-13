@@ -32,7 +32,5 @@ function Get-Net {
         ComputerName   = $computerName
     }
 
-    # Convertir l'objet en JSON
-    # $res = $networkInfo | ConvertTo-Json
     return $networkInfo
 }
