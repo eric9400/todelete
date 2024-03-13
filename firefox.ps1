@@ -32,25 +32,9 @@ function Get-Firefox {
     $version = Get-ItemPropertyValue -Path 'HKLM:\SOFTWARE\Mozilla\Mozilla Firefox' -Name "CurrentVersion"
     $addons = Get-FirefoxAddon
 
-    # retrieve certificate information from Firefox
-    # $certificates = Get-ChildItem -Path "$env:APPDATA\Mozilla\Firefox\Profiles" -Filter "cert*.db" -Recurse | ForEach-Object {
-    #     $profileDir = $_.DirectoryName
-    #     $certDBPath = Join-Path -Path $profileDir -ChildPath $_.Name
-    #     $certDB = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Store -ArgumentList $certDBPath
-    #     $certDB.Open([System.Security.Cryptography.X509Certificates.OpenFlags]::ReadOnly)
-    #     $certs = $certDB.Certificates
-    #     $certDB.Close()
-    #     $certs
-    # }
-
-    # $certificateInfo = $certificates | Select-Object -Property Subject, Issuer, NotBefore, NotAfter
-
-    # $firefoxInfo.Certificates = $certificateInfo
-
     $firefoxInfo = @{
         Version      = $version
         Addons       = $addons
-        Certificates = $certificateInfo
     }
     return $firefoxInfo
 }
