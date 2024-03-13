@@ -21,5 +21,3 @@ function Get-Security
     }
     return $security_info
 }
-
-# Write-Host (Get-Security | ConvertTo-Json)
