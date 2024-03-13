@@ -21,5 +21,3 @@ function Get-LogonCache
     }
     return $logonCacheInfo
 }
-
-# Get-LogonCache | ConvertTo-Json
