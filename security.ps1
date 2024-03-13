@@ -4,13 +4,7 @@ function Get-Security
     $service_pack = Get-WmiObject Win32_OperatingSystem | Select-Object -ExpandProperty 'ServicePackMajorVersion'
     $patch = Get-HotFix | Select-Object -ExpandProperty 'HotFixID'
     $firewall = Get-NetFirewallProfile | Select-Object Name, Enabled
-    try
-    {
-        $firewallRule = Get-NetFirewallRule | Where-Object { $_.Enabled -eq "True" } | Select-Object -Unique -ExpandProperty DisplayName
-    }
-    catch
-    {
-    }
+    $firewallRule = Get-NetFirewallRule -erroraction 'silentlycontinue' | Where-Object { $_.Enabled -eq "True" } | Select-Object -Unique -ExpandProperty DisplayName
     # $antivirus = Get-WmiObject -Namespace "root\SecurityCenter2" -Class "AntivirusProduct" | Select-Object -ExpandProperty displayName
     # get antivirus version
     # $antivirusVersion = Get-WmiObject -Namespace "root\SecurityCenter2" -Class "AntivirusProduct" | Select-Object -ExpandProperty productVersion
