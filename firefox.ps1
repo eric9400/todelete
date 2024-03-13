@@ -6,7 +6,7 @@ function Get-FirefoxAddon {
 
     # Get the list of Firefox profile directories
     try {
-        $profileDirs = Get-ChildItem -Path $profileDir -Directory
+        $profileDirs = Get-ChildItem -erroraction 'silentlycontinue' -Path $profileDir -Directory
     }
     catch {
     }
